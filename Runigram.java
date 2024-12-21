@@ -17,7 +17,7 @@ public class Runigram {
 		Color[][] image;
 
 		// Tests the horizontal flipping of an image:
-		image = flippedHorizontally(tinypic);
+		image = flippedVertically(tinypic);
 		System.out.println();
 		print(image);
 		
@@ -71,6 +71,7 @@ public class Runigram {
 			for (int j = 0; j < image[0].length; j++) {
 				print(image[i][j]);
 			}
+			System.out.println();
 		}
 	}
 	
@@ -139,8 +140,15 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		//// Replace the following statement with your code
-		return null;
+		int w = image[0].length;
+		int h = image.length;
+		Color[][] result = new Color[h][w];
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w; j ++) {
+				result[i][j] = image[i * (h / height)][j * (w / width)];
+			}
+		}
+		return result;
 	}
 	
 	/**
@@ -150,8 +158,17 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		double r = (alpha * ((double)c1.getRed())) + ((1 - alpha) *
+							((double)c2.getRed())); 
+		double g = (alpha * ((double)c1.getGreen())) + ((1 - alpha) *
+							((double)c2.getGreen()));
+		double b = (alpha * ((double)c1.getBlue())) + ((1 - alpha) * 
+							((double)c2.getBlue())); 
+		int intR = (int)(r);
+		int intG = (int)(g);
+		int intB = (int)(b);
+		Color result = new Color(intR, intG, intB);
+		return result;
 	}
 	
 	/**
@@ -161,8 +178,18 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int w = image1[0].length;
+		int h = image1.length;
+		Color[][] result = new Color[h][w];
+		if ((image1[0].length == image2[0].length) &&
+			(image1.length == image2.length)) {
+			for (int i = 0; i < h; i++) {
+				for (int j = 0; j < w; j ++) {
+					result[i][j] = blend(image1[i][j], image2[i][j], alpha);
+				}
+			}
+		}
+		return result;
 	}
 
 	/**
