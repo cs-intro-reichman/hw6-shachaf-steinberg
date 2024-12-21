@@ -200,7 +200,7 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		int alpha = 0;
-		target = scaled(source, source[0].length, source.length);
+		target = scaled(target, source[0].length, source.length);
 		for (int i = 0; i < n; i++) {
 			alpha = (n - i) / n;
 			source = blend(source, target, alpha);
