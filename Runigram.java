@@ -116,7 +116,7 @@ public class Runigram {
 		int r = (int)(pixel.getRed() * 0.299);
 		int g = (int)(pixel.getGreen() * 0.587);
 		int b = (int)(pixel.getBlue() * 0.114);
-		Color resultPixel = new Color(r, g, b);
+		Color resultPixel = new Color(r + g + b);
 		return resultPixel;
 	}
 	
@@ -200,7 +200,7 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		int alpha = 0;
-		target = scaled(target, source[0].length, source.length);
+		target = scaled(source, source[0].length, source.length);
 		for (int i = 0; i < n; i++) {
 			alpha = (n - i) / n;
 			source = blend(source, target, alpha);
