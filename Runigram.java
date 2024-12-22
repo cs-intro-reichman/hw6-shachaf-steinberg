@@ -20,6 +20,9 @@ public class Runigram {
 		image = flippedVertically(tinypic);
 		System.out.println();
 		print(image);
+		System.out.println();
+		image = scaled(tinypic,3,5);
+		print(image);
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can continue using the image array.
@@ -141,12 +144,14 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
-		int w = image[0].length;
-		int h = image.length;
+		double w = image[0].length;
+		double h = image.length;
 		Color[][] result = new Color[height][width];
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j ++) {
-				result[i][j] = image[i * (h / height)][j * (w / width)];
+				int imageI = (int)(i * (h / height));
+				int imageJ = (int)(j * (w / width));
+				result[i][j] = image[imageI][imageJ];
 			}
 		}
 		return result;
