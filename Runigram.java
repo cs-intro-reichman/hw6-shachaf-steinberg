@@ -116,7 +116,8 @@ public class Runigram {
 		int r = (int)(pixel.getRed() * 0.299);
 		int g = (int)(pixel.getGreen() * 0.587);
 		int b = (int)(pixel.getBlue() * 0.114);
-		Color resultPixel = new Color(r + g + b);
+		int sum = r + g + b;
+		Color resultPixel = new Color(sum, sum, sum);
 		return resultPixel;
 	}
 	
